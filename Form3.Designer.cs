@@ -74,6 +74,7 @@
             // PanelPerson
             // 
             PanelPerson.BackColor = System.Drawing.Color.White;
+            PanelPerson.Enabled = false;
             PanelPerson.Location = new System.Drawing.Point(32, 385);
             PanelPerson.Name = "PanelPerson";
             PanelPerson.Size = new System.Drawing.Size(308, 312);
@@ -319,6 +320,7 @@
             // ButtonResetSimulation
             // 
             ButtonResetSimulation.BackColor = System.Drawing.Color.Silver;
+            ButtonResetSimulation.Enabled = false;
             ButtonResetSimulation.Location = new System.Drawing.Point(40, 1056);
             ButtonResetSimulation.Name = "ButtonResetSimulation";
             ButtonResetSimulation.Size = new System.Drawing.Size(298, 34);

@@ -1,7 +1,6 @@
-P1,Color [A=255. R=81. G=160. B=246],False,True,10,10,4
-P2,Color [A=255. R=53. G=194. B=99],False,True,10,80,4
-P3,Color [A=255. R=101. G=56. B=126],False,False,10,150,0
-P4,Color [A=255. R=1. G=118. B=159],False,False,10,220,0
-P5,Color [A=255. R=162. G=24. B=40],False,False,90,10,0
-P6,Color [A=255. R=4. G=97. B=14],False,True,90,80,4
-P7,Color [A=255. R=159. G=108. B=182],True,False,90,150,4
+P1,Color [A=255. R=1. G=113. B=170],False,True,10,10,4
+P2,Color [A=255. R=100. G=82. B=63],False,True,10,80,4
+P3,Color [A=255. R=219. G=193. B=116],True,True,10,150,4
+P4,Color [A=255. R=173. G=200. B=192],False,True,10,220,5
+P5,Color [A=255. R=27. G=100. B=95],False,True,90,10,4
+P6,Color [A=255. R=27. G=138. B=120],False,True,90,80,0

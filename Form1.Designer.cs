@@ -168,7 +168,6 @@ namespace Experiment_DSAL_assignment_1
             TextMaxSeats.Name = "TextMaxSeats";
             TextMaxSeats.Size = new System.Drawing.Size(176, 31);
             TextMaxSeats.TabIndex = 13;
-            TextMaxSeats.TextChanged += TextMaxSeats_TextChanged;
             // 
             // ButtonLoad
             // 
@@ -325,6 +324,7 @@ namespace Experiment_DSAL_assignment_1
             // PanelPerson
             // 
             PanelPerson.BackColor = System.Drawing.Color.White;
+            PanelPerson.Enabled = false;
             PanelPerson.Location = new System.Drawing.Point(30, 431);
             PanelPerson.Name = "PanelPerson";
             PanelPerson.Size = new System.Drawing.Size(308, 312);

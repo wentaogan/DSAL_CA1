@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\acer\\OneDrive\\Documents\\DSAL_CA1\\Experiment_DSAL_assignment_1_05Nov2021\\Experiment_DSAL_assignment_1.csproj": {}
+    "C:\\Users\\acer\\OneDrive\\Documents\\CA1_EL_EM0303_FT_01_2200378_GANWENTAO\\DSAL_CA1\\Experiment_DSAL_assignment_1_05Nov2021\\Experiment_DSAL_assignment_1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\acer\\OneDrive\\Documents\\DSAL_CA1\\Experiment_DSAL_assignment_1_05Nov2021\\Experiment_DSAL_assignment_1.csproj": {
+    "C:\\Users\\acer\\OneDrive\\Documents\\CA1_EL_EM0303_FT_01_2200378_GANWENTAO\\DSAL_CA1\\Experiment_DSAL_assignment_1_05Nov2021\\Experiment_DSAL_assignment_1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\acer\\OneDrive\\Documents\\DSAL_CA1\\Experiment_DSAL_assignment_1_05Nov2021\\Experiment_DSAL_assignment_1.csproj",
+        "projectUniqueName": "C:\\Users\\acer\\OneDrive\\Documents\\CA1_EL_EM0303_FT_01_2200378_GANWENTAO\\DSAL_CA1\\Experiment_DSAL_assignment_1_05Nov2021\\Experiment_DSAL_assignment_1.csproj",
         "projectName": "Experiment_DSAL_assignment_1",
-        "projectPath": "C:\\Users\\acer\\OneDrive\\Documents\\DSAL_CA1\\Experiment_DSAL_assignment_1_05Nov2021\\Experiment_DSAL_assignment_1.csproj",
+        "projectPath": "C:\\Users\\acer\\OneDrive\\Documents\\CA1_EL_EM0303_FT_01_2200378_GANWENTAO\\DSAL_CA1\\Experiment_DSAL_assignment_1_05Nov2021\\Experiment_DSAL_assignment_1.csproj",
         "packagesPath": "C:\\Users\\acer\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\acer\\OneDrive\\Documents\\DSAL_CA1\\Experiment_DSAL_assignment_1_05Nov2021\\obj\\",
+        "outputPath": "C:\\Users\\acer\\OneDrive\\Documents\\CA1_EL_EM0303_FT_01_2200378_GANWENTAO\\DSAL_CA1\\Experiment_DSAL_assignment_1_05Nov2021\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

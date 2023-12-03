@@ -70,7 +70,6 @@ namespace Experiment_DSAL_assignment_1
 
         private void UpdateLabel()
         {
-            //
             if (bookState == BookState.Load) // when user click on the load button
             {
                 bookState = BookState.Start;
@@ -106,7 +105,6 @@ namespace Experiment_DSAL_assignment_1
                     }
                 }
             }
-            //
             else if (_currentPerson != null) // when user is booking for second person
             {
                 bookState = BookState.Booking;
@@ -116,28 +114,6 @@ namespace Experiment_DSAL_assignment_1
                 {
 
                     Seat seat = (Seat)seatLabel.Tag;
-                    /*
-                    // target for current person selected seats (finish select
-                    if ((seat.IAmBooked && seat.IAmBookedBy == "") || seat.IAmBookedBy != "")
-                    {
-                        seat.IAmBooked = false;
-                        seat.IAmBookedBy = _currentPerson.Name.ToString();
-                        seatLabel.BackColor = Color.Red;
-                        seatLabel.Enabled = false;
-                    }
-                    // target for disabled seats
-                    else if (!seat.status)
-                    {
-                        seatLabel.BackColor = Color.Purple;
-                    }
-                    // target for unselected seats
-                    else
-                    {
-                        seatLabel.BackColor = Color.LightCyan;
-                        seatLabel.Enabled = true;
-                    }
-                    */
-                    //
                     // set current person book seat to current person select color
                     if (seat.IAmBooked)
                     {
@@ -157,7 +133,6 @@ namespace Experiment_DSAL_assignment_1
                         seatLabel.BackColor = Color.LightCyan;
                         seatLabel.Enabled = true;
                     }
-                    //
                 }
             }
             // Start - when user click on the person label
@@ -185,6 +160,7 @@ namespace Experiment_DSAL_assignment_1
                 {
                     Seat seat = (Seat)seatLabel.Tag;
                     seatLabel.BackColor = Color.Purple;
+                    seat.status = true;
                     seatLabel.Enabled = true;
                     seat.IAmBooked = false;
                     seat.IAmBookedBy = "";
@@ -193,67 +169,12 @@ namespace Experiment_DSAL_assignment_1
         }// end of UpdateLabel()
         private void LabelSeat_Click(object sender, EventArgs e)
         {
-            /*
-            Label seatLabel = (Label)sender;
-            Seat seat = (Seat)seatLabel.Tag;
-            if (editorState == EditorState.Enable)
+            // check whether user already end the simulation 
+            if (bookState == BookState.End)
             {
-                seat.status = true;
-                seatLabel.BackColor = Color.LightCyan;
+                MessageBox.Show("You already end the simulation mode");
+                return;
             }
-            else if (editorState == EditorState.Disable)
-            {
-                seat.status = false;
-                seatLabel.BackColor = Color.Purple;
-            }
-            else
-            {
-                if (int.TryParse(TextMaxSeats.Text, out int intMaxSeats))
-                {
-                    if (intMaxSeats == 0)
-                    {
-                        textboxOutput.Text = "Invalid input";
-                        return;
-                    }
-                    else
-                    {
-                        TextMaxSeats.Enabled = false;
-                        _maxSeats = intMaxSeats;
-                    }
-                    if (seat.status) // check the status of seat (disable/enable)
-                    {
-                        if (seat.IAmBooked) // check booked seat
-                        {
-                            if (CheckAvailabilityToUnBook(seat))
-                            {
-                                seat.IAmBooked = false;
-                            }
-                        }
-                        else // check unbook seat
-                        {
-                            // Check whether is exceed the maxSeats
-                            // Check is there a person at left and right by CheckPersonBeside
-                            // Check is the seat selected is adjacent with the seat already select previouly
-                            if (CheckAvailabilityToBook(seat))
-                            {
-                                seat.MyLabel.BackColor = _currentPerson.SelectColor;
-                                seat.IAmBooked = true;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Seat is Disable.");
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Please set a maximum number of seats first");
-                }
-            }
-            */
-
-            //
             // make sure user select a person first before click on the seat label
             if (_currentPerson == null && bookState != BookState.Editor)
             {
@@ -282,7 +203,7 @@ namespace Experiment_DSAL_assignment_1
                 {
                     if (intMaxSeats == 0)
                     {
-                        textboxOutput.Text = "Invalid input";
+                        MessageBox.Show("Invalid input");
                         return;
                     }
                     else
@@ -321,7 +242,6 @@ namespace Experiment_DSAL_assignment_1
                     MessageBox.Show("Please set a maximum number of seats first");
                 }
             }
-            //
         }//end of labelSeat_Click
 
         // retrieve the seat at the left and right of the selected seat
@@ -456,10 +376,7 @@ namespace Experiment_DSAL_assignment_1
 
         private void ButtonGenerateSeat_Click(object sender, EventArgs e)
         {
-            //
-            //panelLayout.Controls.Clear();
             _seatLabels.Clear();
-            //
             // parse the number of row and col into integer
             // if parse success, assign the value to numRow and seatPerRow
             if (int.TryParse(TextNumRow.Text, out int row) && int.TryParse(TextSeatPerRow.Text, out int col))
@@ -565,30 +482,27 @@ namespace Experiment_DSAL_assignment_1
             comboBoxPersonNo.Enabled = true;
             ButtonEnterEditor.Enabled = true;
             ButtonSafeDistance.Enabled = true;
+            ButtonGenerateSeat.Enabled = false;
+            PanelPerson.Enabled = true;
         }// end of ButtonGenerateSeat_Click()
 
 
         private void ButtonResetSimulation_Click(object sender, EventArgs e)
         {
+            bookState = BookState.End;
             MessageBox.Show("Simulation reset!");
             foreach (Label personLabel in _personLabels)
             {
                 personLabel.Enabled = true;
-            }
-            foreach (Label seatLabel in _seatLabels)
-            {
-                Seat seat = (Seat)seatLabel.Tag;
-                seat.status = true;
-                seat.IAmBooked = false;
-                seat.IAmBookedBy = "";
-                seatLabel.Enabled = false;
             }
             UpdateLabel();
             textboxOutput.Text = "";
             TextMaxSeats.Text = "";
             ButtonEnterEditor.Enabled = true;
             ButtonGenerateSeat.Enabled = true;
+            ButtonSafeDistance.Enabled = true;
             comboBoxPersonNo.Enabled = true;
+            TextMaxSeats.Enabled = false;
         }// end of Button ResetSimulation_Click()
 
         private void ButtonEnterEditor_Click(object sender, EventArgs e)
@@ -607,15 +521,16 @@ namespace Experiment_DSAL_assignment_1
             {
                 personLabel.Enabled = false;
             }
-            foreach (Label personLabel in _personLabels)
+            foreach (Label seatLabel in _seatLabels)
             {
-                personLabel.Enabled = false;
+                seatLabel.Enabled = false;
             }
             textboxOutput.Text = "Seat Editor Enabled\n";
         }// end of ButtonEnterEditor_Click()
 
         private void ButtonExitEditor_Click(object sender, EventArgs e)
         {
+            ButtonResetSimulation.Enabled = true;
             bookState = BookState.Start;
             comboBoxPersonNo.Enabled = true;
             UpdateLabel();
@@ -632,6 +547,7 @@ namespace Experiment_DSAL_assignment_1
                 personLabel.Enabled = true;
             }
             editorState = EditorState.None;
+            ButtonSafeDistance.Enabled = true;
             textboxOutput.Text = "Exited Seat Editor!\n";
         }// end of ButtonExitEditor_Click()
 
@@ -657,21 +573,27 @@ namespace Experiment_DSAL_assignment_1
 
         private void RadEnable_CheckedChanged(object sender, EventArgs e)
         {
+            bookState = BookState.Start;
+            UpdateLabel();
             foreach (Label seatLabel in _seatLabels)
             {
                 seatLabel.Enabled = true;
             }
             editorState = EditorState.Enable;
             textboxOutput.Text = "\nClick seats to enable.";
+            bookState = BookState.Editor; 
         }// end of RadEnable_CheckedChanged()
         private void RadDisable_CheckedChanged(object sender, EventArgs e)
         {
+            bookState = BookState.Start;
+            UpdateLabel();//
             foreach (Label seatLabel in _seatLabels)
             {
                 seatLabel.Enabled = true;
             }
             editorState = EditorState.Disable;
             textboxOutput.Text = "\nClick seats to disabled.";
+            bookState = BookState.Editor; 
         }// end of RadDisable_CheckedChanged()
         private void ButtonSave_Click(object sender, EventArgs e)
         {
@@ -709,6 +631,7 @@ namespace Experiment_DSAL_assignment_1
             ButtonEndSimulation.Enabled = true;
             ButtonEnterEditor.Enabled = false;
             ButtonSave.Enabled = true;
+            ButtonSafeDistance.Enabled = false;
             textboxOutput.Text = _currentPerson.Name + " is booking now";
         }// end of LabelPerson_Click()
 
@@ -776,6 +699,7 @@ namespace Experiment_DSAL_assignment_1
                 personLabel.Enabled = false;
             }
             ButtonResetSimulation.Enabled = true;
+            TextMaxSeats.Enabled = false;
             textboxOutput.Text = "End Simulation!";
         }// end of ButtonEndSimulation_Click()
 
@@ -795,10 +719,13 @@ namespace Experiment_DSAL_assignment_1
                 }
             }
             UpdateLabel();
+            ButtonSafeDistance.Enabled = false;
         }// end of ButtonSageDistance_Click()
 
         private void ButtonLoad_Click(object sender, EventArgs e)
         {
+            ButtonGenerateSeat.Enabled = false;
+            ButtonEndSimulation.Enabled = true;
             bookState = BookState.Load;
             // settle all the load person part
             ReadFromPerson();
@@ -807,8 +734,6 @@ namespace Experiment_DSAL_assignment_1
             seatManager.SeatList.Start = null;
             _seatLabels.Clear();
             seatManager.ReadFromFile();
-
-
             Node seatNode = seatManager.SeatList.Start;
             Seat seat = seatNode.Seat;
             while (seat != null)
@@ -846,7 +771,6 @@ namespace Experiment_DSAL_assignment_1
                 }
                 seat = seatNode.Seat;
             }
-            ButtonEndSimulation.Enabled = true;
         }// end of ButtonLoad_Click()
 
         private void ReadFromPerson()
@@ -905,6 +829,7 @@ namespace Experiment_DSAL_assignment_1
                 line = tr.ReadLine();
             } while (line != null);
             tr.Close();
+            PanelPerson.Enabled = true;
         }// end of ReadFromPerson()
 
 

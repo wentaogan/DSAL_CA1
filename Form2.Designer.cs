@@ -63,6 +63,7 @@
             // PanelPerson
             // 
             PanelPerson.BackColor = System.Drawing.Color.White;
+            PanelPerson.Enabled = false;
             PanelPerson.Location = new System.Drawing.Point(43, 439);
             PanelPerson.Name = "PanelPerson";
             PanelPerson.Size = new System.Drawing.Size(308, 312);
@@ -89,6 +90,7 @@
             // 
             // comboBoxPersonNo
             // 
+            comboBoxPersonNo.Enabled = false;
             comboBoxPersonNo.FormattingEnabled = true;
             comboBoxPersonNo.Location = new System.Drawing.Point(185, 400);
             comboBoxPersonNo.Name = "comboBoxPersonNo";
@@ -320,6 +322,7 @@
             // ButtonResetSimulation
             // 
             ButtonResetSimulation.BackColor = System.Drawing.Color.Silver;
+            ButtonResetSimulation.Enabled = false;
             ButtonResetSimulation.Location = new System.Drawing.Point(43, 1071);
             ButtonResetSimulation.Name = "ButtonResetSimulation";
             ButtonResetSimulation.Size = new System.Drawing.Size(298, 34);
